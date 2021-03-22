@@ -1,8 +1,6 @@
 import time
-
 import pytest
 from selenium.webdriver.common.keys import Keys
-
 from .pages.statistic_page import StatisticPage
 from .pages.webinar_page import WebinarPage
 from .pages.reg_by_video_page import RegByVideoPage
@@ -22,7 +20,7 @@ class TestLoginStatistic:
         StatisticPage(browser).save_previous_value()
         browser.current_window_handle
         time.sleep(10)
-        browser.switch_to.window('tab') """error":"no such window"""""
+        browser.switch_to.window('tab')
         time.sleep(10)
         reg_page = RegByVideoPage(browser)
         link = "https://video.dev.online.vertera.org/ru/sign-in/lending_o_biznese/11"
