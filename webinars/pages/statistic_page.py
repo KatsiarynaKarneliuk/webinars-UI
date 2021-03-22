@@ -5,18 +5,30 @@ from .locators import StatisticPageLocators
 
 
 class StatisticPage(BasePage):
-    def should_be_chart_block(self):
-        assert self.is_element_present(*StatisticPageLocators.CHART_BLOCK), \
-            'CHART_BLOCK is not presented, but should  be'
+    def should_be_statistic_page(self):
 
-    def should_be_countViewLanding(self):
-        assert self.is_element_present(*StatisticPageLocators.CHART_COUNT), \
-            'CHART_COUNT is not presented, but should  be'
+        assert "statistics" in self.browser.current_url, "word \"statistics\" not in url"
 
-    def should_be_nameViewLanding(self):
-        assert self.is_element_present(*StatisticPageLocators.CHART_NAME), \
-            'CHART_NAME is not presented, but should  be'
+    def save_previous_value(self):
+        previous_chart_count = self.browser.find_element(*StatisticPageLocators.CHART_COUNT)
+        previous_value = previous_chart_count.text
+        return previous_value
 
-    def should_be_percentViewLanding(self):
-        assert self.is_element_present(*StatisticPageLocators.CHART_PERCENT), \
-            'CHART_PERCENT is not presented, but should  be'
+    def save_next_value(self):
+        next_chart_count = self.browser.find_element(*StatisticPageLocators.CHART_COUNT)
+        next_value = next_chart_count.text
+        return next_value
+
+    def compare_prevoius_next_value(self,previous_value,next_value):
+        assert previous_value == next_value, "they are different"
+
+
+    """def compare_prevoius_next_value(self):
+        previous_chart_count = self.browser.find_element(*StatisticPageLocators.CHART_COUNT)
+        previous_value= previous_chart_count.text
+        next_chart_count = self.browser.find_element(*StatisticPageLocators.CHART_COUNT)
+        next_value = next_chart_count.text
+        assert  previous_value== next_value, "they are different"""""
+
+
+

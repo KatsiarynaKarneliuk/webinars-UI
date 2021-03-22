@@ -3,14 +3,15 @@ from selenium.common.exceptions import NoAlertPresentException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
-from .locators import BasePageLocators
-import math
+
 
 """базовая страница - класс-от которой будем наследовать (создавать экземпляры)"""
-class BasePage():
-    def __init__(self, browser, url, timeout=10):
+class BasePage:
+    base_url=""
+
+    def __init__(self, browser):
         self.browser = browser
-        self.url = url
+
 
     def is_element_present(self, how, what):
         try:
@@ -34,6 +35,7 @@ class BasePage():
             return False
         return True
 
-    def open(self):
-        self.browser.get(self.url)
+    def open(self,url):
+        self.browser.get(url)
+
 
