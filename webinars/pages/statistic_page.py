@@ -20,15 +20,9 @@ class StatisticPage(BasePage):
         return next_value
 
     def compare_prevoius_next_value(self,previous_value,next_value):
-        assert previous_value == next_value, "they are different"
+        assert previous_value != next_value, "the value didn't change"
 
 
-    """def compare_prevoius_next_value(self):
-        previous_chart_count = self.browser.find_element(*StatisticPageLocators.CHART_COUNT)
-        previous_value= previous_chart_count.text
-        next_chart_count = self.browser.find_element(*StatisticPageLocators.CHART_COUNT)
-        next_value = next_chart_count.text
-        assert  previous_value== next_value, "they are different"""""
 
 
 
