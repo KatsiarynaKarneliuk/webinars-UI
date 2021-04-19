@@ -13,3 +13,7 @@ class WebinarPage(BasePage):
     def should_go_to_statistic_page(self):
         statistic_page_link = self.browser.find_element(*WebinarPageLocators.GO_TO_STATISTIC)
         statistic_page_link.click()
+
+    def should_go_to_candidates_page(self):
+        candidates_page_link = self.browser.find_element(*WebinarPageLocators.GO_TO_CANDIDATES)
+        candidates_page_link.click()

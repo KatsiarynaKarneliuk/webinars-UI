@@ -1,12 +1,9 @@
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.common.by import By
 from .base_page import BasePage
 from .locators import StatisticPageLocators
 
 
 class StatisticPage(BasePage):
     def should_be_statistic_page(self):
-
         assert "statistics" in self.browser.current_url, "word \"statistics\" not in url"
 
     def save_previous_value(self):

@@ -1,6 +1,4 @@
 import time
-import pytest
-from selenium.webdriver.common.keys import Keys
 from .pages.statistic_page import StatisticPage
 from .pages.webinar_page import WebinarPage
 from .pages.reg_by_video_page import RegByVideoPage
