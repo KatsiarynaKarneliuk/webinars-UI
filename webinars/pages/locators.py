@@ -23,14 +23,13 @@ class WebinarPageLocators():
     GO_TO_CANDIDATES = (By.XPATH, '//a[contains(@href, "/ru/cabinet/candidates")]')
 
 class StatisticPageLocators():
-    CHART_BLOCK = (By.CSS_SELECTOR, "#id-179")
-    CHART_NAME = (By.CSS_SELECTOR, "#legends__item-1 .legend__item--name")
-    CHART_COUNT = (By.XPATH, '//div[@id="legends__item-1"]/descendant::span')
-    CHART_PERCENT = (By.XPATH, '//div[@id="legends__item-1"]/child')
+    WEB_REG_COUNT = (By.XPATH, '//div[@id="legends__item-1"]/descendant::span')
+    OPEN_VIDEO_COUNT =(By.XPATH, '//div[@id="legends__item-3"]/descendant::span')
+    CLICK_ON_BUTTON_COUNT = (By.XPATH, '//div[@id="legends__item-5"]/descendant::span')
 
 class CandidatesPageLocators():
     CANDIDATE_CREATE_LINK = (By.XPATH,'//span[text() = "Создать кандидата"]')
-    SUCСES_MESSAGE = (By.XPATH,'//span[text() = "Данные сохранены"]')
+    """SUCСES_MESSAGE = (By.XPATH,'//span[text() = "Данные сохранены"]')"""
     TOTAL = (By.XPATH,'//*[@class="statistics_container"]/div[1]/span[2]')
 
 class handCandidateCreatePageLocators():

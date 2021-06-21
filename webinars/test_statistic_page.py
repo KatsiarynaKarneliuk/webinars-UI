@@ -1,4 +1,6 @@
 import time
+import pytest
+from .pages.locators import StatisticPageLocators
 from .pages.statistic_page import StatisticPage
 from .pages.webinar_page import WebinarPage
 from .pages.reg_by_video_page import RegByVideoPage
@@ -10,12 +12,16 @@ class TestLoginStatistic:
         time.sleep(20)
         StatisticPage(browser).should_be_statistic_page()
 
-
-    def test(self, browser,open_login_page):
+    @pytest.mark.parametrize("current_value",
+                                [(StatisticPageLocators.WEB_REG_COUNT),
+                                 (StatisticPageLocators.OPEN_VIDEO_COUNT),
+                                 (StatisticPageLocators.CLICK_ON_BUTTON_COUNT)
+                                 ])
+    def test_statistic(self, browser,open_login_page,current_value):
         open_login_page.login_by_email("tcekrqytb@emlpro.com", "123456")
         WebinarPage(browser).should_go_to_statistic_page()
         time.sleep(3)
-        StatisticPage(browser).save_previous_value()
+        x=StatisticPage(browser).get_current_value(current_value)
         browser.execute_script("window.open()")
         window_after = browser.window_handles[1]
         browser.switch_to_window(window_after)
@@ -29,10 +35,8 @@ class TestLoginStatistic:
         browser.switch_to_window(window_before)
         browser.refresh()
         time.sleep(3)
-        StatisticPage(browser).save_next_value()
-        StatisticPage(browser).compare_prevoius_next_value('previous_value','next_value')
-
-
+        y=StatisticPage(browser).get_next_value(current_value)
+        assert x<y,"There are not expected differences"
 
 
 
